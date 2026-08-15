@@ -1,2 +1,63 @@
-in this code what i did is i tokenize the text and for cls token i created embedding usng  fibert then trained nueral network on those embedding
-xxxxxxx
+in this code what i did is i tokenize the text and for cls token i created embedding usng  fibert then trained nueral network on those embeddingText
+
+
+Current Pipeline
+
+The application takes the input text and processes it through a tokenization and FinBERT-based embedding pipeline. The text is first passed through the FinBERT tokenizer to convert the raw text into token IDs and attention masks. These tokens are then passed through FinBERT, and the embedding corresponding to the [CLS] token is extracted as the representation of the input text. This embedding is then passed to a trained neural-network classifier, which produces the final prediction.
+
+The overall flow is:
+
+Input Text
+    ↓
+FinBERT Tokenizer
+    ↓
+Token IDs + Attention Mask
+    ↓
+FinBERT
+    ↓
+[CLS] Token Embedding
+    ↓
+Neural Network
+    ↓
+Prediction
+FastAPI Endpoint
+
+To expose the trained pipeline as a service, a FastAPI endpoint is added. The endpoint accepts the input text through an HTTP request, passes it through the tokenizer → FinBERT → embedding → neural-network pipeline, and returns the model prediction as a JSON response.
+
+Client
+  │
+  │ POST /predict
+  │ { "text": "..." }
+  ↓
+FastAPI
+  ↓
+Tokenizer
+  ↓
+FinBERT
+  ↓
+[CLS] Embedding
+  ↓
+Neural Network
+  ↓
+Prediction
+  ↓
+JSON Response
+Docker Compose
+
+The application is containerized using Docker, with docker-compose.yml used to define and run the required services. Docker Compose allows the FastAPI application and its dependencies to be started together in a consistent environment.
+
+The deployment flow becomes:
+
+Docker Compose
+      ↓
+FastAPI Container
+      ↓
+Model Pipeline
+      ↓
+FinBERT + Neural Network
+      ↓
+Prediction API
+
+The complete system can therefore be summarized as:
+
+The current system implements a FinBERT-based text classification pipeline in which input text is tokenized, passed through FinBERT, and represented using the [CLS] embedding. The embedding is then passed to a trained neural-network classifier to generate predictions. The pipeline is exposed through a FastAPI REST endpoint and containerized using Docker Compose, enabling the complete inference service to be started and deployed consistently using a single Docker Compose configuration.
