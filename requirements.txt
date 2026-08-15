@@ -1,0 +1,16 @@
+torch>=2.2.0
+transformers>=4.40.0
+tokenizers>=0.15.0
+datasets>=2.18.0
+accelerate>=0.28.0
+scikit-learn>=1.4.0
+pandas>=2.2.0
+numpy>=1.26.0
+tqdm>=4.66.0
+sentencepiece>=0.2.0
+safetensors>=0.4.2
+huggingface-hub>=0.22.0
+
+fastapi>=0.110.0
+uvicorn>=0.29.0
+pydantic>=2.0.0

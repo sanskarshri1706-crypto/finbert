@@ -1,0 +1,9 @@
+name: sentiment_analysis_app
+
+services:
+  sentiment_analysis_app:
+    build: .
+    container_name: sentiment_analysis
+    ports:
+      - "8000:8000"
+
